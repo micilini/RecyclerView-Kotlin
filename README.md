@@ -33,4 +33,7 @@ Fazendo um breve resumo rápido de como implementar a RecyclerView na sua Aplica
 
 No más, você pode acompanhar cada um dos passos acima no [início deste conteúdo](https://micilini.com/conteudos/android/recyclerview).
 
+## Imagens
+
+![Emulador do Android](https://micilini.com/assets/img/android/rv_06.png)https://micilini.com/assets/img/android/rv_06.png)
 
