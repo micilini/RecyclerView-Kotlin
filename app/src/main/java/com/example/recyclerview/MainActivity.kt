@@ -2,9 +2,11 @@ package com.example.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.adapter.NomesAdapter
 import com.example.recyclerview.databinding.ActivityMainBinding
+import com.example.recyclerview.listener.OnNomesListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,16 @@ class MainActivity : AppCompatActivity() {
 
         //Adapter da RecyclerView
         binding.recyclerNames.adapter = adapter//Aqui estamos dizendo que a nossa RecyclerView será gerenciada pela nossa classe de Adapter, que possui todos os métodos capazes de dar a vida a nossa lista.
+
+        //Define a classe anônima responsável por receber o clique
+        val listener = object : OnNomesListener{
+            override fun onClick() {
+                Toast.makeText(applicationContext, "Fui clicado", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        //Passa a implementação do listener para o Adapter
+        adapter.attachListener(listener)
 
         //Passa a lista de nomes para o Adapter
         adapter.atualizaNomes(listaDeNomes)

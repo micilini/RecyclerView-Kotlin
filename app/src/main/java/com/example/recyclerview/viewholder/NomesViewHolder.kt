@@ -2,8 +2,9 @@ package com.example.recyclerview.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.databinding.RowNomesBinding
+import com.example.recyclerview.listener.OnNomesListener
 
-class NomesViewHolder(private val bind: RowNomesBinding): RecyclerView.ViewHolder(bind.root) {
+class NomesViewHolder(private val bind: RowNomesBinding, private val listener: OnNomesListener): RecyclerView.ViewHolder(bind.root) {
 
     fun bind(nome: String){
         //Representa a ligação do elemento de Interface com seus dados.
@@ -15,6 +16,14 @@ class NomesViewHolder(private val bind: RowNomesBinding): RecyclerView.ViewHolde
         bind.textNome.text = nome
 
         //Agora temos acesso ao RowNomesBinding para ter um acesso padronizado aas views do row_nomes.xml
+
+        //Configurações do CLique no TextView
+
+        bind.textNome.setOnClickListener{
+            listener.onClick()//Chamamos o método OnClick da Interface
+            //Não precisamos ter o código do onClick implementado, pois quem está fornecendo a ViewHolder nos construtores dessa classe, é que vai implementar o listener.
+        }
+
     }
 
 }

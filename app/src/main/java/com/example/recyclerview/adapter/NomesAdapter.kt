@@ -4,12 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.databinding.RowNomesBinding
+import com.example.recyclerview.listener.OnNomesListener
 import com.example.recyclerview.viewholder.NomesViewHolder
 
 class NomesAdapter: RecyclerView.Adapter<NomesViewHolder>() {
 
     private var listaNomes: List<String> = listOf()//Instanciamos uma lista vazia para que não quebre a lógica do RecycleView.
     //Fizemos isso porque o getItemCount espera um valor inicial.
+
+    private lateinit var listener: OnNomesListener//Criamos um atributo do tipo listener para que possamos passa-lo para o ViewHolder
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NomesViewHolder {
         val item = RowNomesBinding.inflate(LayoutInflater.from(parent.context), parent, false)//Para inflar o row_nomes.xml, precisamos usar o método inflate
@@ -19,7 +22,7 @@ class NomesAdapter: RecyclerView.Adapter<NomesViewHolder>() {
         //Em seguida passando o parent que contém outras informações da ViewGroup e um terceiro parâmetro chamado attachToParent.
         //Quando o attachToParent vem setado como true, ele vai criar o layout e já associar na recyclerView, e como não queremos controlar isso, deixamos como false.
 
-        return NomesViewHolder(item)//Retorna uma instancia de ViewHolder, onde dentro dela passamos o elemento Raiz
+        return NomesViewHolder(item, listener)//Retorna uma instancia de ViewHolder, onde dentro dela passamos o elemento Raiz e o OnNomesListener (pois agora se faz necessário)
     }
 
     override fun onBindViewHolder(holder: NomesViewHolder, position: Int) {
@@ -37,4 +40,10 @@ class NomesAdapter: RecyclerView.Adapter<NomesViewHolder>() {
         listaNomes = list//Aqui estamos atribuindo a lista que chegou por parâmetro para nosso atributo declarado acima.
         notifyDataSetChanged()//Indica a RecycleView para que ela atualize seus dados novamente...
     }
+
+    fun attachListener(nomesListener: OnNomesListener){
+        //Função responsável por receber o Listener por parâmetro e salvar nos atributos da classe
+        listener = nomesListener
+    }
+
 }
