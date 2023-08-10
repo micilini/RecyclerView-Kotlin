@@ -35,5 +35,5 @@ No más, você pode acompanhar cada um dos passos acima no [início deste conte�
 
 ## Imagens
 
-![Emulador do Android](https://micilini.com/assets/img/android/rv_06.png)(https://micilini.com/assets/img/android/rv_06.png)
+![Emulador do Android](https://micilini.com/assets/img/android/rv_06.png)
 
